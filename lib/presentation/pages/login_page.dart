@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
         print('Login successful: ${user.name}');
         if (!mounted) return;
         await AutoRouter.of(context).push(
-          VideosRoute(),
+          const MainTabsRoute(),
         );
       } else {
         print('Login failed');

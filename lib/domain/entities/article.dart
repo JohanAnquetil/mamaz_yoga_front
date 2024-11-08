@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 class Article extends Equatable {
   final int id;
 
-  ///TODO Transform String to Datatype
   final String date;
   final String postModified;
   final String title;

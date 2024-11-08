@@ -17,7 +17,7 @@
           const ArticlesRoute(),
           VideosRoute(),
            const HistoryRoute(),
-          ConditionalAuthRoute(),
+          const ProfileRoute(),
         ],
         builder: (context, child) {
           final tabsRouter = AutoTabsRouter.of(context);

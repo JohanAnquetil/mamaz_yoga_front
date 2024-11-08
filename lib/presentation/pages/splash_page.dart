@@ -31,7 +31,7 @@ class SplashPage extends StatelessWidget {
               CustomElevatedButton(
                 onPressed: () {
                   AutoRouter.of(context).push(
-                    const MainTabsRoute(),
+                    ConditionalAuthRoute(),
                   );
                 },
                 text: 'Commencer',

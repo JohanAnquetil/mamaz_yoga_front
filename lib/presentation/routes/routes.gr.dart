@@ -246,11 +246,15 @@ class SplashRoute extends _i13.PageRouteInfo<void> {
 /// [_i10.VideoListPage]
 class VideoListRoute extends _i13.PageRouteInfo<VideoListRouteArgs> {
   VideoListRoute({
+    _i14.Key? key,
     required String categoryName,
     List<_i13.PageRouteInfo>? children,
   }) : super(
           VideoListRoute.name,
-          args: VideoListRouteArgs(categoryName: categoryName),
+          args: VideoListRouteArgs(
+            key: key,
+            categoryName: categoryName,
+          ),
           initialChildren: children,
         );
 
@@ -260,19 +264,27 @@ class VideoListRoute extends _i13.PageRouteInfo<VideoListRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<VideoListRouteArgs>();
-      return _i10.VideoListPage(categoryName: args.categoryName);
+      return _i10.VideoListPage(
+        key: args.key,
+        categoryName: args.categoryName,
+      );
     },
   );
 }
 
 class VideoListRouteArgs {
-  const VideoListRouteArgs({required this.categoryName});
+  const VideoListRouteArgs({
+    this.key,
+    required this.categoryName,
+  });
+
+  final _i14.Key? key;
 
   final String categoryName;
 
   @override
   String toString() {
-    return 'VideoListRouteArgs{categoryName: $categoryName}';
+    return 'VideoListRouteArgs{key: $key, categoryName: $categoryName}';
   }
 }
 
@@ -280,12 +292,14 @@ class VideoListRouteArgs {
 /// [_i11.VideoPlayerPage]
 class VideoPlayerRoute extends _i13.PageRouteInfo<VideoPlayerRouteArgs> {
   VideoPlayerRoute({
+    _i14.Key? key,
     required String categoryName,
     required String videoName,
     List<_i13.PageRouteInfo>? children,
   }) : super(
           VideoPlayerRoute.name,
           args: VideoPlayerRouteArgs(
+            key: key,
             categoryName: categoryName,
             videoName: videoName,
           ),
@@ -299,6 +313,7 @@ class VideoPlayerRoute extends _i13.PageRouteInfo<VideoPlayerRouteArgs> {
     builder: (data) {
       final args = data.argsAs<VideoPlayerRouteArgs>();
       return _i11.VideoPlayerPage(
+        key: args.key,
         categoryName: args.categoryName,
         videoName: args.videoName,
       );
@@ -308,9 +323,12 @@ class VideoPlayerRoute extends _i13.PageRouteInfo<VideoPlayerRouteArgs> {
 
 class VideoPlayerRouteArgs {
   const VideoPlayerRouteArgs({
+    this.key,
     required this.categoryName,
     required this.videoName,
   });
+
+  final _i14.Key? key;
 
   final String categoryName;
 
@@ -318,7 +336,7 @@ class VideoPlayerRouteArgs {
 
   @override
   String toString() {
-    return 'VideoPlayerRouteArgs{categoryName: $categoryName, videoName: $videoName}';
+    return 'VideoPlayerRouteArgs{key: $key, categoryName: $categoryName, videoName: $videoName}';
   }
 }
 

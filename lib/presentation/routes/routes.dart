@@ -5,10 +5,13 @@ import 'guards.dart';
 
 part 'router.gr.dart';
 
-@AutoRouterConfig()
+@AutoRouterConfig(replaceInRouteName: 'Screen|Page,Route')
 class AppRouter extends RootStackRouter {
   final AuthGuard authGuard = AuthGuard();
   final ProfileGuard profileGuard = ProfileGuard();
+
+  @override
+  RouteType get defaultRouteType => const RouteType.material();
 
   @override
   List<AutoRoute> get routes => [
@@ -25,6 +28,7 @@ class AppRouter extends RootStackRouter {
                 page: VideosRoute.page, path: 'videos', guards: [authGuard]),
             AutoRoute(page: HistoryRoute.page, path: 'history'),
             AutoRoute(page: ConditionalAuthRoute.page, path: 'profile'),
+            AutoRoute(page: ProfileRoute.page, path: 'account'),
           ],
         ),
         AutoRoute(
@@ -37,4 +41,9 @@ class AppRouter extends RootStackRouter {
           path: '/player/:categoryName/:videoName',
         ),
       ];
+
+  @override
+  List<AutoRouteGuard> get guards => [
+    // optionally add root guards here
+  ];
 }
