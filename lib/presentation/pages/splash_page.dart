@@ -20,11 +20,11 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         if (state is UnAuthenticated) {
           print('UnAuthenticated');
-          AutoRouter.of(context).push(const LoginRoute());
+          AutoRouter.of(context).replace(const LoginRoute());
         }
         if (state is Authenticated) {
           print('Authenticated');
-          AutoRouter.of(context).push(const HomeRoute());
+          AutoRouter.of(context).replace(const HomeRoute());
         }
       },
       child: Scaffold(

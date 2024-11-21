@@ -5,8 +5,6 @@ import 'package:mamaz_yoga/presentation/blocs/splash/splash_cubit.dart';
 import 'package:mamaz_yoga/presentation/routes/routes.dart';
 import 'package:mamaz_yoga/presentation/theme/app_theme.dart';
 
-import 'init_config.dart';
-
 class MamazYogaApp extends StatefulWidget {
   const MamazYogaApp({super.key});
 

@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:mamaz_yoga/core/constants/api_url.dart';
 import 'package:mamaz_yoga/core/network/dio_client.dart';
 import 'package:mamaz_yoga/data/auth/models/signin_req_params.dart';
-import 'package:mamaz_yoga/data/auth/models/signup_req_params.dart';
 import 'package:mamaz_yoga/init_config.dart';
 
 abstract class AuthService {

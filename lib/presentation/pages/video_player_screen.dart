@@ -1,10 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:video_player/video_player.dart';
-
-import '../widgets/custom_app_bar.dart';
 
 @RoutePage()
 class VideoPlayerPage extends StatefulWidget {

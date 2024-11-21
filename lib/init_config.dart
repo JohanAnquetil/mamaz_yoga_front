@@ -6,47 +6,31 @@ import 'package:mamaz_yoga/data/user/repositories/user.dart';
 import 'package:mamaz_yoga/domain/auth/repositories/auth.dart';
 import 'package:mamaz_yoga/domain/auth/usescases/is_logged_in.dart';
 import 'package:mamaz_yoga/domain/user/repositories/user.dart';
-// import 'package:mamaz_yoga/presentation/blocs/articles/articles_bloc.dart';
-// import 'package:mamaz_yoga/presentation/blocs/detailed_article/detailed_article_bloc.dart';
+import 'package:mamaz_yoga/domain/user/usecases/get_users.dart';
 
 GetIt getIt = GetIt.instance;
 
 Future<void> initConfig() async {
-  // final Dio dio = Dio(BaseOptions(baseUrl: baseUrl));
-
-  // dio.interceptors.add(InterceptorsWrapper(
-  //   onRequest: (options, handler) async {
-  //     final token = await const FlutterSecureStorage().read(key: 'token');
-  //     if (token != null) {
-  //       options.headers['Authorization'] = 'Bearer $token';
-  //     }
-  //     return handler.next(options);
-  //   },
-  // ));
-
-  // getIt.registerLazySingleton<Dio>(() {
-  //   return dio;
-  // });
-
+// Dio
   getIt.registerSingleton<DioClient>(DioClient());
 
+// Usecases
   getIt.registerSingleton<IsLoggedInUseCase>(IsLoggedInUseCase());
+  getIt.registerSingleton<GetUserUseCase>(GetUserUseCase());
 
-  // getIt.registerLazySingleton<VideoRepository>(() => VideoRepositoryImpl());
-
-  // getIt.registerFactory<VideoCubit>(() => VideoCubit(VideoRepositoryImpl()));
-
-  // getIt.registerLazySingleton<ArticlesRemoteDataSource>(
-  //     () => ArticlesRemoteDataSourceImpl());
-
+// Repositories
   getIt.registerSingleton<AuthRepository>(AuthRepositoryImpl());
   getIt.registerSingleton<AuthService>(AuthApiServiceImpl());
   getIt.registerSingleton<UserRepository>(UserRepositoryImpl());
+}
 
+
+
+/// Archives
   // getIt.registerLazySingleton<LoginRemoteDataSource>(() => LoginRemoteDataSourceImpl());
   // getIt.registerFactory<ArticlesBloc>(
   //     () => ArticlesBloc(getIt<ArticlesRemoteDataSource>()));
 
   // getIt.registerSingleton<SigninUseCase>(SigninUseCase());
   // getIt.registerFactory<DetailedArticleBloc>(() => DetailedArticleBloc());
-}
+
