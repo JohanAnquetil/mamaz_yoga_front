@@ -5,5 +5,5 @@ import 'init_config.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initConfig();
-  runApp(const MyApp());
+  runApp(const MamazYogaApp());
 }

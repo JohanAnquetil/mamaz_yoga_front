@@ -1,35 +1,35 @@
-import '../../../domain/entities/category.dart';
-import '../../../domain/entities/video.dart';
+// import '../../../domain/entities/category.dart';
+// import '../../../domain/videos/entities/video.dart';
 
-abstract class VideoState {}
+// abstract class VideoState {}
 
-class VideoInitial extends VideoState {}
+// class VideoInitial extends VideoState {}
 
-class VideoLoading extends VideoState {}
+// class VideoLoading extends VideoState {}
 
-class VideoCategoriesLoaded extends VideoState {
-  final List<Category> categories;
+// class VideoCategoriesLoaded extends VideoState {
+//   final List<Category> categories;
 
-  VideoCategoriesLoaded(this.categories);
-}
+//   VideoCategoriesLoaded(this.categories);
+// }
 
-class VideoLoaded extends VideoState {
-  final List<Video> videos;
+// class VideoLoaded extends VideoState {
+//   final List<Video> videos;
 
-  VideoLoaded(this.videos);
-}
+//   VideoLoaded(this.videos);
+// }
 
-class VideoStreamLoaded extends VideoState {
-  final Video video;
+// class VideoStreamLoaded extends VideoState {
+//   final Video video;
 
-  VideoStreamLoaded(this.video);
+//   VideoStreamLoaded(this.video);
 
-  // @override
-  // List<Object> get props => [video];
-}
+//   // @override
+//   // List<Object> get props => [video];
+// }
 
-class VideoError extends VideoState {
-  final String message;
+// class VideoError extends VideoState {
+//   final String message;
 
-  VideoError(this.message);
-}
+//   VideoError(this.message);
+// }

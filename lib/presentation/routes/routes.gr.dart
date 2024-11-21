@@ -10,7 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i13;
 import 'package:flutter/material.dart' as _i14;
-import 'package:mamaz_yoga/domain/entities/article.dart' as _i15;
+import 'package:mamaz_yoga/data/articles/models/article.dart' as _i15;
 import 'package:mamaz_yoga/presentation/pages/articles_page.dart' as _i1;
 import 'package:mamaz_yoga/presentation/pages/detailed_article_page.dart'
     as _i3;
@@ -47,14 +47,10 @@ class ArticlesRoute extends _i13.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.ConditionalAuthPage]
-class ConditionalAuthRoute
-    extends _i13.PageRouteInfo<ConditionalAuthRouteArgs> {
-  ConditionalAuthRoute({
-    _i14.Key? key,
-    List<_i13.PageRouteInfo>? children,
-  }) : super(
+class ConditionalAuthRoute extends _i13.PageRouteInfo<void> {
+  const ConditionalAuthRoute({List<_i13.PageRouteInfo>? children})
+      : super(
           ConditionalAuthRoute.name,
-          args: ConditionalAuthRouteArgs(key: key),
           initialChildren: children,
         );
 
@@ -63,22 +59,9 @@ class ConditionalAuthRoute
   static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<ConditionalAuthRouteArgs>(
-          orElse: () => const ConditionalAuthRouteArgs());
-      return _i2.ConditionalAuthPage(key: args.key);
+      return const _i2.ConditionalAuthPage();
     },
   );
-}
-
-class ConditionalAuthRouteArgs {
-  const ConditionalAuthRouteArgs({this.key});
-
-  final _i14.Key? key;
-
-  @override
-  String toString() {
-    return 'ConditionalAuthRouteArgs{key: $key}';
-  }
 }
 
 /// generated route for
@@ -342,13 +325,10 @@ class VideoPlayerRouteArgs {
 
 /// generated route for
 /// [_i12.VideosPage]
-class VideosRoute extends _i13.PageRouteInfo<VideosRouteArgs> {
-  VideosRoute({
-    _i14.Key? key,
-    List<_i13.PageRouteInfo>? children,
-  }) : super(
+class VideosRoute extends _i13.PageRouteInfo<void> {
+  const VideosRoute({List<_i13.PageRouteInfo>? children})
+      : super(
           VideosRoute.name,
-          args: VideosRouteArgs(key: key),
           initialChildren: children,
         );
 
@@ -357,20 +337,7 @@ class VideosRoute extends _i13.PageRouteInfo<VideosRouteArgs> {
   static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      final args =
-          data.argsAs<VideosRouteArgs>(orElse: () => const VideosRouteArgs());
-      return _i12.VideosPage(key: args.key);
+      return const _i12.VideosPage();
     },
   );
-}
-
-class VideosRouteArgs {
-  const VideosRouteArgs({this.key});
-
-  final _i14.Key? key;
-
-  @override
-  String toString() {
-    return 'VideosRouteArgs{key: $key}';
-  }
 }

@@ -17,6 +17,7 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: SplashRoute.page, path: '/'),
         AutoRoute(page: DetailedArticleRoute.page, path: '/detailed_article'),
+        AutoRoute(page: LoginRoute.page, path: '/login'),
         //AutoRoute(page: ProfileRoute.page, path: '/profile', guards: [profileGuard]),
         AutoRoute(
           page: MainTabsRoute.page,
@@ -44,6 +45,6 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRouteGuard> get guards => [
-    // optionally add root guards here
-  ];
+        // optionally add root guards here
+      ];
 }
