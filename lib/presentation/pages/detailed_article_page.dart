@@ -1,15 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
-import 'package:intl/intl.dart';
-import 'package:mamaz_yoga/presentation/widgets/custom_network_image.dart';
-import 'package:mamaz_yoga/presentation/widgets/error_widget.dart';
 import '../../data/articles/models/article.dart';
-import '../../init_config.dart';
-import '../theme/app_theme.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../widgets/custom_video_player.dart';
 
 @RoutePage()
 class DetailedArticlePage extends StatefulWidget {

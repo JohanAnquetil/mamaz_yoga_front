@@ -1,5 +1,5 @@
-// import 'package:mamaz_yoga/data/articles/models/article.dart';
+import 'package:dartz/dartz.dart';
 
-// abstract class ArticlesRemoteDataSource  {
-//   Future<List<Article>> getArticles();
-// }
+abstract class ArticlesRepository {
+  Future<Either> getArticles();
+}

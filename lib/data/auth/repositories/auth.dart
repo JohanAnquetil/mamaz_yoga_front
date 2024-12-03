@@ -23,13 +23,34 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<bool> isLoggedIn() async {
+    print("i am here");
     String? token = await storage.read(key: 'token') ?? "";
-    bool isTokenExpired = JwtDecoder.isExpired(token);
+    bool isTokenExpired = false;
 
-    if (token.isEmpty && !isTokenExpired) {
+    if (token != "") {
+      isTokenExpired = JwtDecoder.isExpired(token);
+      print('isTokenExpired: $isTokenExpired');
+    }
+
+    if (token.isEmpty || isTokenExpired) {
+      print("It's empty: false");
       return false;
     } else {
+      print("It's true");
       return true;
+    }
+  }
+
+  @override
+  Future<bool> isTokenRevoked() async {
+    String? token = await storage.read(key: 'token') ?? "";
+    bool isTokenExpired = false;
+
+    if (token != "") {
+      isTokenExpired = JwtDecoder.isExpired(token);
+      return true;
+    } else {
+      return false;
     }
   }
 }

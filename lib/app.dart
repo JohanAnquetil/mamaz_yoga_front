@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 //import 'package:mamaz_yoga/presentation/blocs/articles/articles_bloc.dart';
 import 'package:mamaz_yoga/presentation/blocs/splash/splash_cubit.dart';
+import 'package:mamaz_yoga/presentation/blocs/user/user_bloc.dart';
+import 'package:mamaz_yoga/presentation/blocs/user/user_event.dart';
 import 'package:mamaz_yoga/presentation/routes/routes.dart';
 import 'package:mamaz_yoga/presentation/theme/app_theme.dart';
 
@@ -24,6 +26,9 @@ class _MamazYogaAppState extends State<MamazYogaApp> {
         BlocProvider<SplashCubit>(
           create: (BuildContext context) => SplashCubit()..appStarted(),
         ),
+        BlocProvider<UserBloc>(
+          create: (BuildContext context) => UserBloc()..add(UserLoaded()),
+        )
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

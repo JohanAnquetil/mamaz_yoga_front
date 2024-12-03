@@ -11,7 +11,7 @@ class UserEntity {
   final String subscriptionStartedDate;
   final String subscriptionEndDate;
 
-  UserEntity({
+  const UserEntity({
     required this.gender,
     required this.email,
     required this.firstName,
@@ -24,4 +24,17 @@ class UserEntity {
     required this.subscriptionStartedDate,
     required this.subscriptionEndDate,
   });
+
+  static const UserEntity emptyUser = UserEntity(
+      gender: '-',
+      email: '-',
+      firstName: '-',
+      lastName: '-',
+      displayName: '-',
+      hasAPremiumSubscription: false,
+      surName: '-',
+      subscriptionName: '-',
+      subscriptionDescription: '-',
+      subscriptionStartedDate: '-',
+      subscriptionEndDate: '-');
 }

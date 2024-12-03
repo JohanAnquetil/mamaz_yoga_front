@@ -14,6 +14,9 @@ class LoggerInterceptor extends Interceptor {
     logger.e('${options.method} request ==> $requestPath'); //Error log
     logger.d('Error type: ${err.error} \n '
         'Error message: ${err.message}'); //Debug log
+    if (err.response?.statusCode == 401) {
+      /// TO DO CREATE A CONDITION WHEN THE TOKEN IS REVOKED
+    }
     handler.next(err); //Continue with the Error
   }
 

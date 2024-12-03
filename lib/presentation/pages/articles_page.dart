@@ -1,17 +1,5 @@
-import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
-import 'package:mamaz_yoga/presentation/routes/routes.gr.dart';
-import 'package:mamaz_yoga/presentation/widgets/error_widget.dart';
-import 'package:mamaz_yoga/presentation/widgets/custom_app_bar.dart';
-import '../../domain/articles/repositories/articles_remote_data_source.dart';
-import '../../data/articles/models/article.dart';
-import '../../init_config.dart';
-import '../widgets/list_items.dart';
-import '../widgets/list_item.dart';
 
 @RoutePage()
 class ArticlesPage extends StatefulWidget {

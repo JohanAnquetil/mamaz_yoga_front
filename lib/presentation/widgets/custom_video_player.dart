@@ -48,6 +48,25 @@ class CustomVideoPlayerState extends State<CustomVideoPlayer> {
     super.dispose();
   }
 
+//   @override
+//   Widget build(BuildContext context) {
+//     return AspectRatio(
+//       aspectRatio: _videoPlayerController!.value.aspectRatio,
+//       child: Stack(
+//         alignment: Alignment.bottomCenter,
+//         children: <Widget>[
+//           VideoPlayer(_videoPlayerController!),
+//           _ControlsOverlay(controller: _videoPlayerController!),
+//           VideoProgressIndicator(
+//             _videoPlayerController!,
+//             allowScrubbing: true,
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
   @override
   Widget build(BuildContext context) {
     return widget.isYoutubeVideo

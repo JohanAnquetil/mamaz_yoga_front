@@ -1,12 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mamaz_yoga/presentation/pages/video_player_screen.dart';
 
-import '../../init_config.dart';
-import '../blocs/videos/videos_cubit.dart';
-import '../blocs/videos/videos_state.dart';
-import '../widgets/custom_app_bar.dart';
 
 @RoutePage()
 class VideoListPage extends StatelessWidget {

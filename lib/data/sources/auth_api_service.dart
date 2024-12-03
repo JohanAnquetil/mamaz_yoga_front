@@ -8,6 +8,7 @@ import 'package:mamaz_yoga/init_config.dart';
 abstract class AuthService {
   Future<Either> signin(SigninReqParams params);
   Future<Either> getUser(int id);
+  Future<Either> getArticles();
 }
 
 class AuthApiServiceImpl extends AuthService {
@@ -28,7 +29,19 @@ class AuthApiServiceImpl extends AuthService {
   Future<Either> getUser(int id) async {
     try {
       var response = await getIt<DioClient>().get(ApiUrl.userById(id));
-      return Right(response.data.map((e) => print(e)));
+      print("response : $response");
+      return Right(response.data);
+    } on DioException catch (e) {
+      return Left(e.response!.data['message']);
+    }
+  }
+
+  @override
+  Future<Either> getArticles() async {
+    try {
+      var response = await getIt<DioClient>().get(ApiUrl.publishedNews);
+      print("response all articles in api service : $response");
+      return Right(response.data);
     } on DioException catch (e) {
       return Left(e.response!.data['message']);
     }

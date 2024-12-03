@@ -1,7 +1,7 @@
 import 'package:mamaz_yoga/domain/user/entities/user.dart';
 
 class UserModel {
-  final String gender;
+  final String  gender;
   final String email;
   final String firstName;
   final String lastName;
@@ -13,7 +13,7 @@ class UserModel {
   final String subscriptionStartedDate;
   final String subscriptionEndDate;
 
-  const UserModel({
+  UserModel({
     String? gender,
     required this.email,
     String? firstName,
@@ -43,13 +43,13 @@ class UserModel {
       lastName: json['nom'],
       displayName: json['nom_a_afficher'],
       surName: json['surnom'],
-      hasAPremiumSubscription: json[''],
+      hasAPremiumSubscription: json['has_active_premium_subscription'],
       subscriptionName: json['plan_actuel']['arm_current_plan_detail']
           ['arm_subscription_plan_name'],
       subscriptionDescription: json['plan_actuel']['arm_current_plan_detail']
           ['arm_subscription_plan_description'],
-      subscriptionEndDate: json['plan_actuel']['arm_start_plan'],
-      subscriptionStartedDate: json['plan_actuel']['arm_expire_plan'],
+      subscriptionEndDate: json['plan_actuel']['arm_expire_plan'],
+      subscriptionStartedDate: json['plan_actuel']['arm_start_plan'],
     );
   }
 }
