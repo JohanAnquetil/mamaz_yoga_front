@@ -4,6 +4,4 @@ sealed class UserEvent {
 
 final class UserInitial extends UserEvent {}
 
-final class UserLoaded extends UserEvent {
-  //UserLoaded({required int id});
-}
+final class UserLoaded extends UserEvent {}

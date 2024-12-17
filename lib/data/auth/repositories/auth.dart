@@ -25,6 +25,7 @@ class AuthRepositoryImpl extends AuthRepository {
   Future<bool> isLoggedIn() async {
     print("i am here");
     String? token = await storage.read(key: 'token') ?? "";
+    print("token in repo auth: $token");
     bool isTokenExpired = false;
 
     if (token != "") {
@@ -44,11 +45,12 @@ class AuthRepositoryImpl extends AuthRepository {
   @override
   Future<bool> isTokenRevoked() async {
     String? token = await storage.read(key: 'token') ?? "";
+    print("recorded token in auth repository: $token");
     bool isTokenExpired = false;
 
     if (token != "") {
       isTokenExpired = JwtDecoder.isExpired(token);
-      return true;
+      return isTokenExpired;
     } else {
       return false;
     }

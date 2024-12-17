@@ -20,13 +20,14 @@ class ArticleModel {
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) {
     return ArticleModel(
-      id: json['id'],
-      date: json['date'],
-      postModified: json['postModified'],
-      title: json['title'],
-      image: json['image'],
-      detailedArticle: json['detailedArticle'],
-    );
+        id: json['id'] ?? 0,
+        date: json['post_date_creation'] ?? "",
+        postModified: json['postModified'] ?? "",
+        title: json['post_title'] ?? "",
+        image: json['post_illustration_image'] ?? "",
+        detailedArticle: List<Map<String, dynamic>>.from(
+          json['post_detailed'] ?? [],
+        ));
   }
 }
 

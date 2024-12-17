@@ -1,4 +1,5 @@
-enum ArticlesStatus {
+enum DetailedArticleStatus {
+  unknown,
   initial,
   loading,
   loaded,

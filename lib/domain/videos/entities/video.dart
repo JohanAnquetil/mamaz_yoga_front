@@ -1,16 +1,46 @@
 import 'package:equatable/equatable.dart';
 
 class VideoEntity extends Equatable {
+  final int id;
   final String name;
-  final String category;
-  final String formattedDuration;
+  final String path;
+  final bool isFreeVideo;
+  final String thumbnail;
+  final DateTime date;
+  final int lenght;
 
   const VideoEntity({
+    required this.id,
     required this.name,
-    required this.category,
-    required this.formattedDuration,
+    required this.path,
+    required this.isFreeVideo,
+    required this.thumbnail,
+    required this.date,
+    required this.lenght,
   });
 
+  static VideoEntity emptyVideo() => VideoEntity(
+        id: 0,
+        name: '',
+        path: '',
+        isFreeVideo: false,
+        thumbnail: '',
+        date: DateTime(1970, 1, 1),
+        lenght: 0,
+      );
+
   @override
-  List<Object?> get props => [name, category, formattedDuration];
+  String toString() =>
+      'VideoEntity(id: $id, name: $name, date: $date, path: $path, isFreeVideo: $isFreeVideo, thumbnail: $thumbnail, date: $date, lenght: $lenght)';
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        path,
+        isFreeVideo,
+        thumbnail,
+        date,
+        lenght,
+      ];
 }

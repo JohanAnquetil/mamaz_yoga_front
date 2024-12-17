@@ -12,12 +12,12 @@ class MainTabsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: const [
-        HomeRoute(),
+      routes: [
+        const HomeRoute(),
         ArticlesRoute(),
-        VideosRoute(),
-        HistoryRoute(),
-        ProfileRoute(),
+        const VideosRoute(),
+        const HistoryRoute(),
+        const ProfileRoute(),
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);

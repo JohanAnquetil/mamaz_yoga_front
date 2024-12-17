@@ -76,13 +76,14 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       print("result in Bloc: $result");
       result.fold(
         (failure) {
-          print("failure: $failure");
           emit(UserState.error("Failed to fetch user: $failure"));
         },
         (success) {
           print("succes: $success");
-          emit(UserState.authenticated(
-              UserModel.fromJson(success['data']).toEntity()));
+          emit(
+            UserState.authenticated(
+                UserModel.fromJson(success['data']).toEntity()),
+          );
         },
       );
     } catch (e) {

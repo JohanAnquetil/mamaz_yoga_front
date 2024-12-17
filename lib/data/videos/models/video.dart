@@ -1,21 +1,33 @@
 import 'package:mamaz_yoga/domain/videos/entities/video.dart';
 
 class VideoModel {
-  final String name;
-  final String category;
-  final String formattedDuration;
+  final int id;
+  final String? name;
+  final String? path;
+  final bool isFreeVideo;
+  final String? thumbnail;
+  final DateTime? date;
+  final int lenght;
 
-  VideoModel({
-    required this.name,
-    required this.category,
-    required this.formattedDuration,
+  const VideoModel({
+    required this.id,
+    this.name,
+    this.path,
+    required this.isFreeVideo,
+    this.thumbnail,
+    this.date,
+    required this.lenght,
   });
 
   factory VideoModel.fromJson(Map<String, dynamic> json) {
     return VideoModel(
-      name: json['name'],
-      category: json['category'],
-      formattedDuration: json['formattedDuration'],
+      id: json['id'] ?? 0,
+      name: json['name'] as String?,
+      path: json['path'] as String?,
+      isFreeVideo: json['isFreeVideo'] == 1 ? true : false,
+      thumbnail: json['thumbnail'] as String?,
+      date: json['date'] != null ? DateTime.parse(json['date']) : null,
+      lenght: json['lenght'] ?? 0,
     );
   }
 }
@@ -23,9 +35,13 @@ class VideoModel {
 extension VideoXModel on VideoModel {
   VideoEntity toEntity() {
     return VideoEntity(
-      name: name,
-      category: category,
-      formattedDuration: formattedDuration,
+      id: id,
+      name: name ?? "",
+      path: path ?? "",
+      isFreeVideo: isFreeVideo,
+      thumbnail: thumbnail ?? "",
+      date: date ?? DateTime.now(),
+      lenght: lenght,
     );
   }
 }

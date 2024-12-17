@@ -9,4 +9,10 @@ class ArticlesRepositoryImpl implements ArticlesRepository {
     var articles = await getIt<AuthService>().getArticles();
     return articles.fold((error) => Left(error), (success) => Right(success));
   }
+
+  @override
+  Future<Either> getArticle(int id) async {
+    var article = await getIt<AuthService>().getArticle(id);
+    return article.fold((error) => Left(error), (success) => Right(success));
+  }
 }

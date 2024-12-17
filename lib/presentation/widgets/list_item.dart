@@ -13,6 +13,8 @@ class ListItem extends StatelessWidget {
     required this.date,
     required this.image,
     required this.title,
+    // required List<ArticleEntity> items,
+    // required Null Function(dynamic article) itemBuilder,
   });
 
   @override

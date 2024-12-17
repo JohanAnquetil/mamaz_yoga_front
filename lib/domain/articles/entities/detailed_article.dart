@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class ArticleEntity extends Equatable {
+class DetailedArticleEntitiy extends Equatable {
   final int id;
 
   final String date;
@@ -9,7 +9,7 @@ class ArticleEntity extends Equatable {
   final String? image;
   final List<Map<String, dynamic>> detailedArticle;
 
-  const ArticleEntity({
+  const DetailedArticleEntitiy({
     required this.id,
     required this.date,
     required this.postModified,
@@ -18,7 +18,7 @@ class ArticleEntity extends Equatable {
     required this.detailedArticle,
   });
 
-  static const ArticleEntity emptyArticle = ArticleEntity(
+  static const DetailedArticleEntitiy emptyArticle = DetailedArticleEntitiy(
     id: 0,
     date: "",
     postModified: "",

@@ -10,7 +10,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i13;
 import 'package:flutter/material.dart' as _i14;
-import 'package:mamaz_yoga/data/articles/models/article.dart' as _i15;
 import 'package:mamaz_yoga/presentation/pages/articles_page.dart' as _i1;
 import 'package:mamaz_yoga/presentation/pages/detailed_article_page.dart'
     as _i3;
@@ -28,10 +27,13 @@ import 'package:mamaz_yoga/presentation/pages/videos_page.dart' as _i12;
 
 /// generated route for
 /// [_i1.ArticlesPage]
-class ArticlesRoute extends _i13.PageRouteInfo<void> {
-  const ArticlesRoute({List<_i13.PageRouteInfo>? children})
-      : super(
+class ArticlesRoute extends _i13.PageRouteInfo<ArticlesRouteArgs> {
+  ArticlesRoute({
+    _i14.Key? key,
+    List<_i13.PageRouteInfo>? children,
+  }) : super(
           ArticlesRoute.name,
+          args: ArticlesRouteArgs(key: key),
           initialChildren: children,
         );
 
@@ -40,9 +42,22 @@ class ArticlesRoute extends _i13.PageRouteInfo<void> {
   static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      return const _i1.ArticlesPage();
+      final args = data.argsAs<ArticlesRouteArgs>(
+          orElse: () => const ArticlesRouteArgs());
+      return _i1.ArticlesPage(key: args.key);
     },
   );
+}
+
+class ArticlesRouteArgs {
+  const ArticlesRouteArgs({this.key});
+
+  final _i14.Key? key;
+
+  @override
+  String toString() {
+    return 'ArticlesRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -70,13 +85,13 @@ class DetailedArticleRoute
     extends _i13.PageRouteInfo<DetailedArticleRouteArgs> {
   DetailedArticleRoute({
     _i14.Key? key,
-    required _i15.Article article,
+    required int id,
     List<_i13.PageRouteInfo>? children,
   }) : super(
           DetailedArticleRoute.name,
           args: DetailedArticleRouteArgs(
             key: key,
-            article: article,
+            id: id,
           ),
           initialChildren: children,
         );
@@ -89,7 +104,7 @@ class DetailedArticleRoute
       final args = data.argsAs<DetailedArticleRouteArgs>();
       return _i3.DetailedArticlePage(
         key: args.key,
-        article: args.article,
+        id: args.id,
       );
     },
   );
@@ -98,16 +113,16 @@ class DetailedArticleRoute
 class DetailedArticleRouteArgs {
   const DetailedArticleRouteArgs({
     this.key,
-    required this.article,
+    required this.id,
   });
 
   final _i14.Key? key;
 
-  final _i15.Article article;
+  final int id;
 
   @override
   String toString() {
-    return 'DetailedArticleRouteArgs{key: $key, article: $article}';
+    return 'DetailedArticleRouteArgs{key: $key, id: $id}';
   }
 }
 

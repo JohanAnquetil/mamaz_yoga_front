@@ -1,6 +1,6 @@
-import 'package:equatable/equatable.dart';
+import 'package:mamaz_yoga/domain/articles/entities/detailed_article.dart';
 
-class Article extends Equatable {
+class ArticleDetailedModel {
   final int id;
 
   final String date;
@@ -9,7 +9,7 @@ class Article extends Equatable {
   final String? image;
   final List<Map<String, dynamic>> detailedArticle;
 
-  const Article({
+  const ArticleDetailedModel({
     required this.id,
     required this.date,
     required this.postModified,
@@ -18,19 +18,26 @@ class Article extends Equatable {
     required this.detailedArticle,
   });
 
-  factory Article.fromJson(Map<String, dynamic> json) {
-    return Article(
+  factory ArticleDetailedModel.fromJson(Map<String, dynamic> json) {
+    return ArticleDetailedModel(
       id: json['id'] ?? 0,
-      date: json['post_date_creation'] ?? '',
-      postModified: json['post_date_modified'] ?? '',
-      title: json['post_title'] ?? '',
-      image: json['post_illustration_image'],
+      date: json['date_creation'] ?? '',
+      postModified: json['date_modified'] ?? '',
+      title: json['title'] ?? '',
+      image: json['illustration_image'],
       detailedArticle:
-          List<Map<String, dynamic>>.from(json['post_detailed'] ?? []),
+          List<Map<String, dynamic>>.from(json['post_content'] ?? []),
     );
   }
+}
 
-  @override
-  List<Object?> get props =>
-      [id, date, postModified, title, image, detailedArticle];
+extension ArticleXEntity on ArticleDetailedModel {
+  DetailedArticleEntitiy toEntity() => DetailedArticleEntitiy(
+        id: id,
+        date: date,
+        postModified: postModified,
+        title: title,
+        image: image,
+        detailedArticle: detailedArticle,
+      );
 }

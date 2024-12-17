@@ -1,15 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:mamaz_yoga/presentation/blocs/user/user_bloc.dart';
 import 'package:mamaz_yoga/presentation/blocs/user/user_state.dart';
 import 'package:mamaz_yoga/presentation/blocs/user/user_status.dart';
 import 'package:mamaz_yoga/presentation/theme/app_theme.dart';
 import 'package:mamaz_yoga/presentation/utils/get_month_name.dart';
 import 'package:mamaz_yoga/presentation/widgets/custom_app_bar.dart';
-import '../routes/routes.gr.dart';
 
 @RoutePage()
 class ProfilePage extends StatelessWidget {
@@ -169,7 +166,6 @@ class ProfilePage extends StatelessWidget {
           );
         }
 
-        // État inattendu (optionnel, pour le débogage)
         return const Center(
           child: Text('Unexpected state.'),
         );
