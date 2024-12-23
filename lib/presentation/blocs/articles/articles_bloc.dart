@@ -1,35 +1,36 @@
-import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../data/data_sources/remote/articles/articles_remote_data_source.dart';
-import '../../../domain/entities/article.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../data/news/models/articles_list.dart';
+import '../../../domain/articles/usecases/get_articles.dart';
+import '../../../init_config.dart';
+import 'articles_event.dart';
+import 'articles_state.dart';
 
-part 'articles_event.dart';
+class ArticlesBloc extends Bloc<ArticlesEvents, ArticlesState> {
+  ArticlesBloc() : super(const ArticlesState.unknown()) {
+    on<ArticlesLoadingEvent>(_onArticlesBloc);
+  }
 
-part 'articles_state.dart';
+  Future<void> _onArticlesBloc(
+      ArticlesLoadingEvent event, Emitter<ArticlesState> emit) async {
+    emit(ArticlesState.loading());
 
-part 'articles_bloc.freezed.dart';
-
-class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {
-  final ArticlesRemoteDataSource articlesRepository;
-
-  ArticlesBloc(this.articlesRepository) : super(const ArticlesState.initial()) {
-    on<LoadArticles>((event, emit) async {
-      try {
-        if (state is! ArticlesLoaded) {
-          emit(const ArticlesLoading());
-        }
-        final articlesList = await articlesRepository.getArticles();
-        emit(ArticlesState.loaded(List<Article>.from(articlesList)));
-      } catch (e) {
-        emit(
-          ArticlesState.loadingFailure(e),
-        );
-      } finally {
-        if (event.completer != null && !event.completer!.isCompleted) {
-          event.completer?.complete();
-        }
-      }
+    var result = await getIt<GetArticlesUseCase>().call();
+    print("result in articles bloc: $result");
+    result.fold(
+        (failure) => {print("failure"), emit(ArticlesState.failure(failure))},
+        (success) {
+      print("success");
+      print("${(success['posts'] as List).map((json) => json).toList()}");
+      emit(ArticlesState.loaded(
+        (success['posts'] as List)
+            .map((json) => ArticleModel.fromJson(json).toEntity())
+            .toList()
+          ..sort((a, b) =>
+              DateTime.parse(b.date).compareTo(DateTime.parse(a.date))),
+      ));
     });
+    if (event.completer != null && !event.completer!.isCompleted) {
+      event.completer!.complete();
+    }
   }
 }

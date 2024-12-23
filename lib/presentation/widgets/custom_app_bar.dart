@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_theme.dart';
-
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
   final bool leading;
 
-  const CustomAppBar({super.key, required this.title, this.leading = false});
+  const CustomAppBar({super.key, this.leading = false});
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +19,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           : null,
       title: Container(
         padding: const EdgeInsets.all(7.0),
-        color: AppTheme.pinkColor,
-        child: Text(
-          title,
-          style: AppTheme.textTheme.titleMedium,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset(
+              "assets/images/nom.png",
+              width: 130,
+            ),
+            SizedBox(
+              width: 15,
+            ),
+          ],
         ),
       ),
     );

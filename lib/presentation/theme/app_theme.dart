@@ -13,7 +13,7 @@ abstract class AppTheme {
     titleMedium: GoogleFonts.montserrat(
       fontSize: 24,
       fontWeight: FontWeight.w600,
-      color: const Color(0xFF171717),
+      color: goldColor,
     ),
     titleLarge: GoogleFonts.montserrat(
       fontSize: 40,

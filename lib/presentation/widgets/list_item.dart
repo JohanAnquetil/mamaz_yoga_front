@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mamaz_yoga/presentation/theme/app_theme.dart';
-import 'package:mamaz_yoga/presentation/widgets/custom_network_image.dart';
+import '../theme/app_theme.dart';
+import 'custom_network_image.dart';
 
 class ListItem extends StatelessWidget {
   final DateTime date;
@@ -13,6 +13,8 @@ class ListItem extends StatelessWidget {
     required this.date,
     required this.image,
     required this.title,
+    // required List<ArticleEntity> items,
+    // required Null Function(dynamic article) itemBuilder,
   });
 
   @override

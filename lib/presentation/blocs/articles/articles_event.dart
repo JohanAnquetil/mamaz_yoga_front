@@ -1,7 +1,16 @@
-part of 'articles_bloc.dart';
+import 'dart:async';
 
-@freezed
-class ArticlesEvent with _$ArticlesEvent{
-  const factory ArticlesEvent.loadArticles({Completer? completer}) = LoadArticles;
+sealed class ArticlesEvents {
+  const ArticlesEvents();
 }
 
+class ArticlesInitialEvent extends ArticlesEvents {}
+
+class ArticlesLoadingEvent extends ArticlesEvents {
+  final Completer? completer;
+  const ArticlesLoadingEvent({this.completer});
+}
+
+class ArticlesLoadedEvent extends ArticlesEvents {}
+
+class ArticlesFailureEvent extends ArticlesEvents {}

@@ -10,7 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i13;
 import 'package:flutter/material.dart' as _i14;
-import 'package:mamaz_yoga/domain/entities/article.dart' as _i15;
+import 'package:mamaz_yoga/domain/videos/entities/video.dart' as _i15;
 import 'package:mamaz_yoga/presentation/pages/articles_page.dart' as _i1;
 import 'package:mamaz_yoga/presentation/pages/detailed_article_page.dart'
     as _i3;
@@ -28,10 +28,13 @@ import 'package:mamaz_yoga/presentation/pages/videos_page.dart' as _i12;
 
 /// generated route for
 /// [_i1.ArticlesPage]
-class ArticlesRoute extends _i13.PageRouteInfo<void> {
-  const ArticlesRoute({List<_i13.PageRouteInfo>? children})
-      : super(
+class ArticlesRoute extends _i13.PageRouteInfo<ArticlesRouteArgs> {
+  ArticlesRoute({
+    _i14.Key? key,
+    List<_i13.PageRouteInfo>? children,
+  }) : super(
           ArticlesRoute.name,
+          args: ArticlesRouteArgs(key: key),
           initialChildren: children,
         );
 
@@ -40,21 +43,30 @@ class ArticlesRoute extends _i13.PageRouteInfo<void> {
   static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      return const _i1.ArticlesPage();
+      final args = data.argsAs<ArticlesRouteArgs>(
+          orElse: () => const ArticlesRouteArgs());
+      return _i1.ArticlesPage(key: args.key);
     },
   );
 }
 
+class ArticlesRouteArgs {
+  const ArticlesRouteArgs({this.key});
+
+  final _i14.Key? key;
+
+  @override
+  String toString() {
+    return 'ArticlesRouteArgs{key: $key}';
+  }
+}
+
 /// generated route for
 /// [_i2.ConditionalAuthPage]
-class ConditionalAuthRoute
-    extends _i13.PageRouteInfo<ConditionalAuthRouteArgs> {
-  ConditionalAuthRoute({
-    _i14.Key? key,
-    List<_i13.PageRouteInfo>? children,
-  }) : super(
+class ConditionalAuthRoute extends _i13.PageRouteInfo<void> {
+  const ConditionalAuthRoute({List<_i13.PageRouteInfo>? children})
+      : super(
           ConditionalAuthRoute.name,
-          args: ConditionalAuthRouteArgs(key: key),
           initialChildren: children,
         );
 
@@ -63,22 +75,9 @@ class ConditionalAuthRoute
   static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<ConditionalAuthRouteArgs>(
-          orElse: () => const ConditionalAuthRouteArgs());
-      return _i2.ConditionalAuthPage(key: args.key);
+      return const _i2.ConditionalAuthPage();
     },
   );
-}
-
-class ConditionalAuthRouteArgs {
-  const ConditionalAuthRouteArgs({this.key});
-
-  final _i14.Key? key;
-
-  @override
-  String toString() {
-    return 'ConditionalAuthRouteArgs{key: $key}';
-  }
 }
 
 /// generated route for
@@ -87,13 +86,13 @@ class DetailedArticleRoute
     extends _i13.PageRouteInfo<DetailedArticleRouteArgs> {
   DetailedArticleRoute({
     _i14.Key? key,
-    required _i15.Article article,
+    required int id,
     List<_i13.PageRouteInfo>? children,
   }) : super(
           DetailedArticleRoute.name,
           args: DetailedArticleRouteArgs(
             key: key,
-            article: article,
+            id: id,
           ),
           initialChildren: children,
         );
@@ -106,7 +105,7 @@ class DetailedArticleRoute
       final args = data.argsAs<DetailedArticleRouteArgs>();
       return _i3.DetailedArticlePage(
         key: args.key,
-        article: args.article,
+        id: args.id,
       );
     },
   );
@@ -115,16 +114,16 @@ class DetailedArticleRoute
 class DetailedArticleRouteArgs {
   const DetailedArticleRouteArgs({
     this.key,
-    required this.article,
+    required this.id,
   });
 
   final _i14.Key? key;
 
-  final _i15.Article article;
+  final int id;
 
   @override
   String toString() {
-    return 'DetailedArticleRouteArgs{key: $key, article: $article}';
+    return 'DetailedArticleRouteArgs{key: $key, id: $id}';
   }
 }
 
@@ -246,11 +245,15 @@ class SplashRoute extends _i13.PageRouteInfo<void> {
 /// [_i10.VideoListPage]
 class VideoListRoute extends _i13.PageRouteInfo<VideoListRouteArgs> {
   VideoListRoute({
+    _i14.Key? key,
     required String categoryName,
     List<_i13.PageRouteInfo>? children,
   }) : super(
           VideoListRoute.name,
-          args: VideoListRouteArgs(categoryName: categoryName),
+          args: VideoListRouteArgs(
+            key: key,
+            categoryName: categoryName,
+          ),
           initialChildren: children,
         );
 
@@ -260,19 +263,27 @@ class VideoListRoute extends _i13.PageRouteInfo<VideoListRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<VideoListRouteArgs>();
-      return _i10.VideoListPage(categoryName: args.categoryName);
+      return _i10.VideoListPage(
+        key: args.key,
+        categoryName: args.categoryName,
+      );
     },
   );
 }
 
 class VideoListRouteArgs {
-  const VideoListRouteArgs({required this.categoryName});
+  const VideoListRouteArgs({
+    this.key,
+    required this.categoryName,
+  });
+
+  final _i14.Key? key;
 
   final String categoryName;
 
   @override
   String toString() {
-    return 'VideoListRouteArgs{categoryName: $categoryName}';
+    return 'VideoListRouteArgs{key: $key, categoryName: $categoryName}';
   }
 }
 
@@ -280,14 +291,14 @@ class VideoListRouteArgs {
 /// [_i11.VideoPlayerPage]
 class VideoPlayerRoute extends _i13.PageRouteInfo<VideoPlayerRouteArgs> {
   VideoPlayerRoute({
-    required String categoryName,
-    required String videoName,
+    _i14.Key? key,
+    required _i15.VideoEntity video,
     List<_i13.PageRouteInfo>? children,
   }) : super(
           VideoPlayerRoute.name,
           args: VideoPlayerRouteArgs(
-            categoryName: categoryName,
-            videoName: videoName,
+            key: key,
+            video: video,
           ),
           initialChildren: children,
         );
@@ -299,8 +310,8 @@ class VideoPlayerRoute extends _i13.PageRouteInfo<VideoPlayerRouteArgs> {
     builder: (data) {
       final args = data.argsAs<VideoPlayerRouteArgs>();
       return _i11.VideoPlayerPage(
-        categoryName: args.categoryName,
-        videoName: args.videoName,
+        key: args.key,
+        video: args.video,
       );
     },
   );
@@ -308,29 +319,26 @@ class VideoPlayerRoute extends _i13.PageRouteInfo<VideoPlayerRouteArgs> {
 
 class VideoPlayerRouteArgs {
   const VideoPlayerRouteArgs({
-    required this.categoryName,
-    required this.videoName,
+    this.key,
+    required this.video,
   });
 
-  final String categoryName;
+  final _i14.Key? key;
 
-  final String videoName;
+  final _i15.VideoEntity video;
 
   @override
   String toString() {
-    return 'VideoPlayerRouteArgs{categoryName: $categoryName, videoName: $videoName}';
+    return 'VideoPlayerRouteArgs{key: $key, video: $video}';
   }
 }
 
 /// generated route for
 /// [_i12.VideosPage]
-class VideosRoute extends _i13.PageRouteInfo<VideosRouteArgs> {
-  VideosRoute({
-    _i14.Key? key,
-    List<_i13.PageRouteInfo>? children,
-  }) : super(
+class VideosRoute extends _i13.PageRouteInfo<void> {
+  const VideosRoute({List<_i13.PageRouteInfo>? children})
+      : super(
           VideosRoute.name,
-          args: VideosRouteArgs(key: key),
           initialChildren: children,
         );
 
@@ -339,20 +347,7 @@ class VideosRoute extends _i13.PageRouteInfo<VideosRouteArgs> {
   static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      final args =
-          data.argsAs<VideosRouteArgs>(orElse: () => const VideosRouteArgs());
-      return _i12.VideosPage(key: args.key);
+      return const _i12.VideosPage();
     },
   );
-}
-
-class VideosRouteArgs {
-  const VideosRouteArgs({this.key});
-
-  final _i14.Key? key;
-
-  @override
-  String toString() {
-    return 'VideosRouteArgs{key: $key}';
-  }
 }

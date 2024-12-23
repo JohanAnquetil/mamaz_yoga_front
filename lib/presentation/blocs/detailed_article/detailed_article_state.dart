@@ -1,36 +1,36 @@
-part of 'detailed_article_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../../../domain/articles/entities/detailed_article.dart';
+import 'detailed_article_status.dart';
 
-abstract class DetailedArticleState extends Equatable {
-  const DetailedArticleState();
+class DetailedArticleState extends Equatable {
+  final DetailedArticleStatus status;
+  final DetailedArticleEntitiy article;
+  final String? errorMessage;
 
-  @override
-  List<Object?> get props => [];
-}
+  const DetailedArticleState._({
+    this.status = DetailedArticleStatus.initial,
+    this.article = DetailedArticleEntitiy.emptyArticle,
+    this.errorMessage,
+  });
 
-final class DetailedArticleInitial extends DetailedArticleState {
-  @override
-  List<Object?> get props => [];
-}
+  const DetailedArticleState.unknown() : this._();
 
-class DetailedArticleLoading extends DetailedArticleState {
-  @override
-  List<Object?> get props => [];
-}
+  const DetailedArticleState.initial()
+      : this._(status: DetailedArticleStatus.initial);
 
-class DetailedArticleLoaded extends DetailedArticleState {
-  final Article article;
+  const DetailedArticleState.loading()
+      : this._(status: DetailedArticleStatus.loading);
 
-  const DetailedArticleLoaded(this.article);
+  const DetailedArticleState.loaded(var article)
+      : this._(status: DetailedArticleStatus.loaded, article: article);
 
-  @override
-  List<Object?> get props => [article];
-}
-
-class DetailedArticleLoadingFailure extends DetailedArticleState {
-  final Object? exception;
-
-  const DetailedArticleLoadingFailure(this.exception);
+  const DetailedArticleState.failure(String message)
+      : this._(errorMessage: message);
 
   @override
-  List<Object?> get props => [exception];
+  List<Object?> get props => [
+        status,
+        article,
+        errorMessage,
+      ];
 }

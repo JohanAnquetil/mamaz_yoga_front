@@ -1,35 +1,63 @@
-import '../../../domain/entities/category.dart';
-import '../../../domain/entities/video.dart';
+// import 'package:equatable/equatable.dart';
 
-abstract class VideoState {}
+// import '../../../domain/entities/category.dart';
+// import '../../../domain/videos/entities/video.dart';
 
-class VideoInitial extends VideoState {}
+// enum VideoStreamingStatus {
+//   initial,
+//   loading,
+//   success,
+//   failure,
+// }
 
-class VideoLoading extends VideoState {}
+// extension VideoStreamingStatusX on VideoStreamingStatus {
+//   bool get isInitial => this == VideoStreamingStatus.initial;
+//   bool get isLoading => this == VideoStreamingStatus.loading;
+//   bool get isSuccess => this == VideoStreamingStatus.success;
+//   bool get isFailure => this == VideoStreamingStatus.failure;
+// }
 
-class VideoCategoriesLoaded extends VideoState {
-  final List<Category> categories;
+// class VideoStreamingState extends Equatable {
+//   final VideoEntity video;
+//   final VideoStreamingStatus status;
+//   final 
 
-  VideoCategoriesLoaded(this.categories);
-}
+//   const
 
-class VideoLoaded extends VideoState {
-  final List<Video> videos;
+//   @override
+//   // TODO: implement props
+//   List<Object?> get props => throw UnimplementedError();
+// }
 
-  VideoLoaded(this.videos);
-}
+// abstract class VideoState {}
 
-class VideoStreamLoaded extends VideoState {
-  final Video video;
+// class VideoInitial extends VideoState {}
 
-  VideoStreamLoaded(this.video);
+// class VideoLoading extends VideoState {}
 
-  // @override
-  // List<Object> get props => [video];
-}
+// class VideoCategoriesLoaded extends VideoState {
+//   final List<Category> categories;
 
-class VideoError extends VideoState {
-  final String message;
+//   VideoCategoriesLoaded(this.categories);
+// }
 
-  VideoError(this.message);
-}
+// class VideoLoaded extends VideoState {
+//   final List<Video> videos;
+
+//   VideoLoaded(this.videos);
+// }
+
+// class VideoStreamLoaded extends VideoState {
+//   final Video video;
+
+//   VideoStreamLoaded(this.video);
+
+//   // @override
+//   // List<Object> get props => [video];
+// }
+
+// class VideoError extends VideoState {
+//   final String message;
+
+//   VideoError(this.message);
+// }

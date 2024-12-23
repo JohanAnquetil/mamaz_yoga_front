@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:mamaz_yoga/presentation/routes/routes.gr.dart';
+import 'routes.gr.dart';
 
 class ProfileGuard extends AutoRouteGuard {
   final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
